@@ -7,6 +7,9 @@ class TypedIntro extends Component {
     super()
   }
 
+  // =============================
+  // TYPED.JS
+  // =============================
   typed = (elem, arr, callback) => {
     let options = {
       typeSpeed: 10,
@@ -37,10 +40,15 @@ class TypedIntro extends Component {
         'Countries all over the world are working nonstop to',
         'be the first country to get a human in space.',
         'Will You be the first?',
-        'Or will your enemies crush you?'
+        'Or will your enemies crush you?',
+        ''
       ],
-      this.def
+      this.next
     )
+  }
+
+  next = () => {
+    this.props.chooseShip()
   }
 
   componentDidMount() {
@@ -48,13 +56,6 @@ class TypedIntro extends Component {
   }
 
   render() {
-    // =============================
-    // TYPED.JS
-    // =============================
-
-    // A DEFAULT FUNCTION THAT DOESN'T DO ANYTHING TO PASS INTO TYPED
-    function def() {}
-
     return <span id="typed" className="typed-intro" />
   }
 }

@@ -10,7 +10,8 @@ class App extends Component {
       startGame: false
     }
   }
-  startGame = () => {
+  startGame = e => {
+    e.preventDefault()
     this.setState({
       startGame: true
     })
