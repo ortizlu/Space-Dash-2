@@ -50,6 +50,7 @@ button {
 .btn {
   background-color: #b954e2;
   color: white;
+  cursor: pointer;
   text-decoration: none;
   padding: 10px 15px;
   font-size: 2rem;
@@ -79,7 +80,6 @@ button {
   .btn {
     background-color: #b954e2;
     color: white;
-    cursor: pointer;
     text-decoration: none;
     padding: 7px 12px;
     font-size: 1.5rem;

@@ -38,6 +38,32 @@
 /*PICKING SHIP */
 /*================ */
 
-.player-1-choose-ship {
+.choose-ship {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.typed-instructions {
   font-size: 2em;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.spaceship {
+  width: 180px;
+  height: 230px;
+  border-radius: 30px;
+  background-color: rgba(255, 177, 1, 0.42);
+  display: inline-block;
+  margin: 20px;
+  transition: transform .2s;
+  cursor: pointer;
+  border: 3px solid #97640559;
+}
+
+.spaceship:hover {
+  transform: scale(1.2);
 }

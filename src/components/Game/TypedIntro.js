@@ -3,10 +3,6 @@ import './Game.css'
 import Typed from 'typed.js'
 
 class TypedIntro extends Component {
-  constructor() {
-    super()
-  }
-
   // =============================
   // TYPED.JS
   // =============================
@@ -35,12 +31,12 @@ class TypedIntro extends Component {
       [
         '',
         'Welcome Space Cadet!',
-        'The Year is 1960',
-        'And the space race is on.',
-        'Countries all over the world are working nonstop to',
-        'be the first country to get a human in space.',
-        'Will You be the first?',
-        'Or will your enemies crush you?',
+        // 'The Year is 1960',
+        // 'And the space race is on.',
+        // 'Countries all over the world are working nonstop to',
+        // 'be the first country to get a human in space.',
+        // 'Will You be the first?',
+        // 'Or will your enemies crush you?',
         ''
       ],
       this.next

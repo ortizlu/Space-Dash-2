@@ -7,8 +7,30 @@ class Overlay extends Component {
   constructor() {
     super()
     this.state = {
-      chooseShips: false
+      chooseShips: false,
+      ships: [
+        {
+          name: 'MR-3',
+          image: './img/spaceship1.png'
+        },
+        {
+          name: 'Soyuz 28',
+          image: './img/spaceship2.png'
+        },
+        {
+          name: 'Vostok I',
+          image: './img/spaceship3.png'
+        },
+        {
+          name: 'Soyuz 30',
+          image: './img/spaceship4.png'
+        }
+      ]
     }
+
+    this.playerOne = {}
+
+    this.playerTwo = {}
   }
 
   chooseShip = () => {
@@ -21,7 +43,7 @@ class Overlay extends Component {
     return (
       <div className="overlay">
         {this.state.chooseShips ? (
-          <ChooseShip />
+          <ChooseShip ships={this.state.ships} />
         ) : (
           <TypedIntro chooseShip={this.chooseShip} />
         )}
