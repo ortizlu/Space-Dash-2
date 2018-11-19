@@ -52,7 +52,40 @@
   margin-bottom: 30px;
 }
 
-.spaceship {
+.ships {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.ships__ship {
+  background-color: transparent;
+}
+
+
+.ships__ship__image {
+  width: 60px;
+  height: 80px;
+  border-radius: 20px;
+  background-color: rgba(255, 177, 1, 0.42);
+  display: inline-block;
+  margin: 10px;
+  transition: transform .2s;
+  cursor: pointer;
+  border: 3px solid #97640559;
+}
+
+.spaceship:hover {
+  transform: scale(1.2);
+}
+
+
+/* MEDIA QUERIES */
+
+/* SPACESHIP SIZE FOR BIGGER SCREENS */
+
+/* .spaceship {
   width: 180px;
   height: 230px;
   border-radius: 30px;
@@ -62,8 +95,4 @@
   transition: transform .2s;
   cursor: pointer;
   border: 3px solid #97640559;
-}
-
-.spaceship:hover {
-  transform: scale(1.2);
-}
+} */

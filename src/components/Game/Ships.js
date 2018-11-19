@@ -3,12 +3,12 @@ import React, { Component } from 'react'
 class Ships extends Component {
   render() {
     return (
-      <div>
-        {this.props.ships.map(ship => {
+      <div className="ships">
+        {this.props.ships.map((ship, index) => {
           return (
-            <a href="#">
-              <img className="spaceship" name={ship.name} src={ship.image} />
-            </a>
+            <button className="ships__ship" key={index}>
+              <img alt="spaceship" className="ships__ship__image" name={ship.name} src={ship.image} />
+            </button>
           )
         })}
       </div>
