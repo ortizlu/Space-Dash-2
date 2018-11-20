@@ -33,19 +33,34 @@ class Overlay extends Component {
     this.playerTwo = {}
   }
 
-  chooseShip = () => {
+  canChooseShip = () => {
     this.setState({
       chooseShips: true
     })
   }
 
+  pickShip = (e) => {
+    let pick = e.target.name
+    let ships = this.state.ships
+    for (let i = 0; i < this.state.ships.length; i++) {
+      if (this.state.ships[i].name === pick) {
+        ships.splice(i, 1)
+      }
+    }
+    this.setState({
+      ships: ships
+    })
+  }
+
+  
+
   render() {
     return (
       <div className="overlay">
         {this.state.chooseShips ? (
-          <ChooseShip ships={this.state.ships} />
+          <ChooseShip pickShip={this.pickShip} ships={this.state.ships} />
         ) : (
-          <TypedIntro chooseShip={this.chooseShip} />
+          <TypedIntro canChooseShip={this.canChooseShip} />
         )}
       </div>
     )

@@ -45,7 +45,7 @@ class ChooseShip extends Component {
       <div className="choose-ship">
         <TypedInstructions allowPicking={this.allowPicking} />
 
-        {this.state.pick ? <Ships ships={this.props.ships} /> : <div />}
+        {this.state.pick ? <Ships pickShip={this.props.pickShip} ships={this.props.ships} /> : <div />}
       </div>
     )
   }

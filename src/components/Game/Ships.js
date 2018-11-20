@@ -1,19 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-class Ships extends Component {
-  render() {
-    return (
-      <div className="ships">
-        {this.props.ships.map((ship, index) => {
+const Ships = (props) => {
+  return (
+    <div className="ships">
+      {props.ships.map((ship, index) => {
           return (
-            <button className="ships__ship" key={index}>
+            <button onClick={props.pickShip} className="ships__ship" key={index}>
               <img alt="spaceship" className="ships__ship__image" name={ship.name} src={ship.image} />
             </button>
           )
         })}
-      </div>
-    )
-  }
-}
+    </div>
+  );
+};
 
-export default Ships
+export default Ships;

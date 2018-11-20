@@ -44,7 +44,7 @@ class TypedIntro extends Component {
   }
 
   next = () => {
-    this.props.chooseShip()
+    this.props.canChooseShip()
   }
 
   componentDidMount() {
