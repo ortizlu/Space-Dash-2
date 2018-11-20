@@ -1,4 +1,4 @@
-import { ADD_ARTICLE } from "../constants/action-types";
+import { REMOVE_SHIP } from "../constants/action-types";
 
 const initialState = {
   ships: [
@@ -20,6 +20,7 @@ const initialState = {
     }
   ]
 }
+
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case REMOVE_SHIP:
