@@ -2,26 +2,23 @@ import React, { Component } from 'react'
 import './App.css'
 import Splash from '../Splash/Splash'
 import GameMain from '../Game/GameMain'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import * as gameMainActions from '../../actions/gameMainActions'
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      startGame: false
-    }
-  }
+
   startGame = e => {
     e.preventDefault()
-    this.setState({
-      startGame: true
-    })
+    this.props.actions.startGame()
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="App">
         <main>
-          {this.state.startGame ? (
+          {this.props.game.startGame ? (
             <GameMain />
           ) : (
             <Splash startGame={this.startGame} />
@@ -32,4 +29,20 @@ class App extends Component {
   }
 }
 
-export default App
+function mapStateToProps(state, props) {
+  return {
+    game: state.game
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(gameMainActions, dispatch)
+  }
+}
+
+const connection = connect(mapStateToProps, mapDispatchToProps)
+
+const wrappedComponent = connection(App)
+
+export default wrappedComponent
