@@ -1,1 +1,0 @@
-export const REMOVE_SHIP = "REMOVE_SHIP"

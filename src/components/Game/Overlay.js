@@ -2,54 +2,22 @@ import React, { Component } from 'react'
 import './Game.css'
 import TypedIntro from './TypedIntro'
 import ChooseShip from './ChooseShip'
+import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux'
+import * as shipActions from '../../actions/shipActions'
 
 class Overlay extends Component {
-  constructor() {
-    super()
-    this.state = {
-      chooseShips: false,
-      ships: [
-        {
-          name: 'MR-3',
-          image: './img/spaceship1.png'
-        },
-        {
-          name: 'Soyuz 28',
-          image: './img/spaceship2.png'
-        },
-        {
-          name: 'Vostok I',
-          image: './img/spaceship3.png'
-        },
-        {
-          name: 'Soyuz 30',
-          image: './img/spaceship4.png'
-        }
-      ]
-    }
 
-    this.playerOne = {}
-
-    this.playerTwo = {}
-  }
 
   canChooseShip = () => {
-    this.setState({
-      chooseShips: true
-    })
+    console.log(this.props.actions)
+    this.props.actions.chooseShips()
   }
 
   pickShip = (e) => {
+    console.log(e.target.name)
     let pick = e.target.name
-    let ships = this.state.ships
-    for (let i = 0; i < this.state.ships.length; i++) {
-      if (this.state.ships[i].name === pick) {
-        ships.splice(i, 1)
-      }
-    }
-    this.setState({
-      ships: ships
-    })
+    this.props.actions.removeShip(pick)
   }
 
   
@@ -57,8 +25,8 @@ class Overlay extends Component {
   render() {
     return (
       <div className="overlay">
-        {this.state.chooseShips ? (
-          <ChooseShip pickShip={this.pickShip} ships={this.state.ships} />
+        {this.props.ship.chooseShips ? (
+          <ChooseShip pickShip={this.pickShip} ships={this.props.ship.ships} />
         ) : (
           <TypedIntro canChooseShip={this.canChooseShip} />
         )}
@@ -67,4 +35,20 @@ class Overlay extends Component {
   }
 }
 
-export default Overlay
+function mapStateToProps(state, props) {
+  return {
+    ship: state.ship
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(shipActions, dispatch)
+  }
+}
+
+const connection = connect(mapStateToProps, mapDispatchToProps)
+
+const wrappedComponent = connection(Overlay)
+
+export default wrappedComponent
