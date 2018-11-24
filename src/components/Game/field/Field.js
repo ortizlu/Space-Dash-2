@@ -11,9 +11,9 @@ const Field = (props) => {
     <div>
       <PlayerTwoHand></PlayerTwoHand>
 
-      <Deck></Deck>
+      <Deck {...props}></Deck>
 
-      <Instructions></Instructions>
+      <Instructions message={props.game.instructions}></Instructions>
 
       <Graveyard></Graveyard>
       

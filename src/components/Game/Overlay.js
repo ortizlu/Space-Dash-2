@@ -14,7 +14,7 @@ import Field from './field/Field'
 
 class Overlay extends Component {
 
-
+  //============ MAIN SHIP PICKING METHODS==================
   allowedToChooseShip = () => {
     this.props.actions.chooseShips()
   }
@@ -32,13 +32,22 @@ class Overlay extends Component {
      this.props.actions.chooseShipsComplete()
     }
   }
+  //============ MAIN SHIP PICKING METHODS==================
+
+  //============ MAIN GAME METHODS==================
+
+  changeFieldInstructions = (message) => {
+    this.props.actions.changeInstructions(message)
+  }
+
+  //============ MAIN GAME METHODS==================
 
   
 
   render() {
     let center
     if (this.props.game.chooseShipsComplete) {
-      center = <Field></Field>
+      center = <Field {...this.props}></Field>
     } else {
       center = this.props.ship.chooseShips ? (
         <ChooseShip {...this.props} pickShip={this.pickShip} />
@@ -57,7 +66,7 @@ class Overlay extends Component {
         {/* ===========PLAYER TWO DASHBOARD========== */}
 
 
-        {/* DISPLAY THE INTRO TEXT FIRST, THEN CHOOSESHIP COMPONENT, THEN DISPLAY THE GAME SCREEN */}
+        {/* DISPLAY THE INTRO TEXT FIRST, THEN CHOOSE-SHIP COMPONENT, THEN DISPLAY THE GAME SCREEN */}
         {center}
 
         

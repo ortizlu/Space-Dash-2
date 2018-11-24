@@ -8,7 +8,7 @@ class TypedIntro extends Component {
   // =============================
   typed = (elem, arr, callback) => {
     let options = {
-      typeSpeed: 10,
+      typeSpeed: 15,
       strings: arr,
       showCursor: false,
       onComplete: callback,

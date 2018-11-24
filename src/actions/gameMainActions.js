@@ -1,3 +1,4 @@
+//MAIN START OF GAME (BUTTON FROM SPLASH)
 export const startGame = () => {
   return {
     type: 'GAME_START',
@@ -22,6 +23,7 @@ export const pickShip = (turn, ship) => {
   }
 }
 
+//CHANGE PLAYER'S TURN
 export const changeTurn = turn => {
   if (!turn) {
     return {
@@ -36,9 +38,18 @@ export const changeTurn = turn => {
   }
 }
 
+//CHANGE TO TRUE SO THAT THE FIELD IS DISPLAYED
 export const chooseShipsComplete = () => {
   return {
     type: 'CHOOSE_SHIPS_COMPLETE',
     payload: true
+  }
+}
+
+//CHANGE INSTRUCTIONS TEXT
+export const changeInstructions = (text) => {
+  return {
+    type: 'CHANGE_INSTRUCTIONS',
+    payload: text
   }
 }

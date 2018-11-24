@@ -1,5 +1,6 @@
 
 const gameState = {
+  instructions: 'Draw a Card ',
   chooseShipsComplete: false,
   startGame: false,
   turn: false,
@@ -28,6 +29,8 @@ export default (state = gameState, action) => {
       return {...state, turn: action.payload}
     case 'CHOOSE_SHIPS_COMPLETE':
       return {...state, chooseShipsComplete: action.payload}
+    case 'CHANGE_INSTRUCTIONS':
+      return {...state, instructions: action.payload}
     default:
       return state
   }
