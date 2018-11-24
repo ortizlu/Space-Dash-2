@@ -6,6 +6,8 @@ import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
 import * as shipActions from '../../actions/shipActions'
 import * as gameMainActions from '../../actions/gameMainActions'
+import PlayerOneAvatar from './avatar/PlayerOneAvatar';
+import PlayerTwoAvatar from './avatar/PlayerTwoAvatar'
 
 class Overlay extends Component {
 
@@ -22,6 +24,10 @@ class Overlay extends Component {
     this.props.actions.removeShip(pick)
     //change to next person's turn
     this.props.actions.changeTurn(this.props.game.turn)
+    //if its the second player's turn, proceed to start the game
+    if (this.props.game.turn) {
+      console.log('let the games begin!')
+    }
   }
 
   
@@ -29,11 +35,18 @@ class Overlay extends Component {
   render() {
     return (
       <div className="overlay">
+
+        {/* SHOW PLAYER TWO AVATAR */}
+        {this.props.game.playerTwo.ship ? <PlayerTwoAvatar image={this.props.game.playerTwo.ship.image}></PlayerTwoAvatar> : <span></span>}
+
         {this.props.ship.chooseShips ? (
           <ChooseShip {...this.props} pickShip={this.pickShip} />
         ) : (
           <TypedIntro allowedToChooseShip={this.allowedToChooseShip} />
         )}
+
+        {/* SHOW PLAYER ONE AVATAR */}
+        {this.props.game.playerOne.ship ? <PlayerOneAvatar image={this.props.game.playerOne.ship.image}></PlayerOneAvatar> : <span></span>}
       </div>
     )
   }
