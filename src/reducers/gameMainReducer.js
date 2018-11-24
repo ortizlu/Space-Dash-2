@@ -3,10 +3,12 @@ const gameState = {
   startGame: false,
   turn: false,
   playerOne: {
-    ship: ''
+    ship: '',
+    sp: 0
   },
   playerTwo: {
-    ship: ''
+    ship: '',
+    sp: 0
   }
 }
 

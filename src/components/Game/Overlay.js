@@ -6,8 +6,10 @@ import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
 import * as shipActions from '../../actions/shipActions'
 import * as gameMainActions from '../../actions/gameMainActions'
-import PlayerOneAvatar from './avatar/PlayerOneAvatar';
+import PlayerOneAvatar from './avatar/PlayerOneAvatar'
 import PlayerTwoAvatar from './avatar/PlayerTwoAvatar'
+import PlayerOneSP from './avatar/PlayerOneSP'
+import PlayerTwoSP from './avatar/PlayerTwoSP'
 
 class Overlay extends Component {
 
@@ -38,6 +40,8 @@ class Overlay extends Component {
 
         {/* SHOW PLAYER TWO AVATAR */}
         {this.props.game.playerTwo.ship ? <PlayerTwoAvatar image={this.props.game.playerTwo.ship.image}></PlayerTwoAvatar> : <span></span>}
+        {/* SHOW PLAYER TWO SHIP POINTS */}
+        {this.props.game.playerTwo.ship ? <PlayerTwoSP sp={this.props.game.playerTwo.sp}></PlayerTwoSP> : <span></span>}
 
         {this.props.ship.chooseShips ? (
           <ChooseShip {...this.props} pickShip={this.pickShip} />
@@ -47,6 +51,8 @@ class Overlay extends Component {
 
         {/* SHOW PLAYER ONE AVATAR */}
         {this.props.game.playerOne.ship ? <PlayerOneAvatar image={this.props.game.playerOne.ship.image}></PlayerOneAvatar> : <span></span>}
+        {/* SHOW PLAYER ONE SHIP POINTS */}
+        {this.props.game.playerOne.ship ? <PlayerOneSP sp={this.props.game.playerOne.sp}></PlayerOneSP> : <span></span>}
       </div>
     )
   }
