@@ -5,6 +5,7 @@ import ChooseShip from './ChooseShip'
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
 import * as shipActions from '../../actions/shipActions'
+import * as gameMainActions from '../../actions/gameMainActions'
 
 class Overlay extends Component {
 
@@ -14,9 +15,13 @@ class Overlay extends Component {
   }
 
   pickShip = (e) => {
-    console.log(e.target.name)
     let pick = e.target.name
+    //add their ship to their object based on who's turn is it. The second parameter is the ship itself (name and image url)
+    this.props.actions.pickShip(this.props.game.turn, {name: pick, image: e.target.dataset.image})
+    //remove ship from array
     this.props.actions.removeShip(pick)
+    //change to next person's turn
+    this.props.actions.changeTurn(this.props.game.turn)
   }
 
   
@@ -36,13 +41,14 @@ class Overlay extends Component {
 
 function mapStateToProps(state, props) {
   return {
-    ship: state.ship
+    ship: state.ship,
+    game: state.game
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(shipActions, dispatch)
+    actions: bindActionCreators({...shipActions, ...gameMainActions}, dispatch)
   }
 }
 

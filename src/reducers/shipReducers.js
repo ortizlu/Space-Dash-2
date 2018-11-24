@@ -1,4 +1,3 @@
-import { bindActionCreators } from "redux";
 
 const initialShipState = {
   chooseShips: false,

@@ -6,7 +6,7 @@ const Ships = (props) => {
       {props.ships.map((ship, index) => {
           return (
             <button onClick={props.pickShip} className="ships__ship" key={index}>
-              <img alt="spaceship" className="ships__ship__image" name={ship.name} src={ship.image} />
+              <img alt="spaceship" className="ships__ship__image" name={ship.name} data-image={ship.image} src={ship.image} />
             </button>
           )
         })}
