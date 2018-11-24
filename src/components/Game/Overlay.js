@@ -10,6 +10,7 @@ import PlayerOneAvatar from './dashboard/PlayerOneAvatar'
 import PlayerTwoAvatar from './dashboard/PlayerTwoAvatar'
 import PlayerOneSP from './dashboard/PlayerOneSP'
 import PlayerTwoSP from './dashboard/PlayerTwoSP'
+import Field from './field/Field'
 
 class Overlay extends Component {
 
@@ -37,7 +38,7 @@ class Overlay extends Component {
   render() {
     let center
     if (this.props.game.chooseShipsComplete) {
-      center = <h1>Game main component</h1>
+      center = <Field></Field>
     } else {
       center = this.props.ship.chooseShips ? (
         <ChooseShip {...this.props} pickShip={this.pickShip} />

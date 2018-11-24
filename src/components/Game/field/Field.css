@@ -1,0 +1,57 @@
+.field__graveyard {
+  max-width: 50px;
+  height: auto;
+  background-color: #730f9e;
+  padding: 10px 5px;
+  box-shadow: 1px 1px 7px 0px grey;
+  transition: transform .3s;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%)
+}
+
+.field__deck {
+  max-width: 50px;
+  height: auto;
+  background-color: #730f9e;
+  padding: 10px 5px;
+  box-shadow: 1px 1px 7px 0px grey;
+  transition: transform .3s;
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%)
+}
+
+.field__card {
+  max-width: 40px;
+  background-color: #730f9e;
+  box-shadow: 1px 1px 7px 0px grey;
+  margin: 5px;
+  padding: 5px 2px;
+}
+
+.field__hand-two {
+  width: 100%;
+  max-height: 50px;
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.field__hand-one {
+  width: 100%;
+  max-height: 50px;
+  position: absolute;
+  bottom: 16%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  text-align: center;
+}
