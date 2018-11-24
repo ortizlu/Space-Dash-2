@@ -4,17 +4,7 @@ import TypedInstructions from './TypedInstructions'
 import './Game.css'
 import Ships from './Ships'
 
-// =============================
-// WHEN YOU HAVE TIME, NEXT PLAN IS TO ADD THE TYPED WORDS TO STATE IN OVERLAY, SO THAT WHEN INTRO TYPING IS DONE, CHANGE THE CLASS NAME SO THAT THE TEXT IS SMALLER, THEN TYPE (PLAYER 1 CHOOSE SHIP), THEN CHANGE STATE OF CHOOSE SHIP TO TRUE, THEN RENDER THE SHIP PICKING COMPONENT HERE
-// =============================
-
 class ChooseShip extends Component {
-  constructor() {
-    super()
-    this.state = {
-      pick: false
-    }
-  }
 
   // =============================
   // TYPED.JS
@@ -34,10 +24,9 @@ class ChooseShip extends Component {
     let typed = new Typed(elem, options)
   }
 
+  // this gets passed into the TypedInstructions component so that after the message is typed ('Player X: Choose your spaceship'), picking is allowed and the Ships can be rendered
   allowPicking = () => {
-    this.setState({
-      pick: true
-    })
+    this.props.actions.allowPicking()
   }
 
   render() {
@@ -45,7 +34,7 @@ class ChooseShip extends Component {
       <div className="choose-ship">
         <TypedInstructions allowPicking={this.allowPicking} />
 
-        {this.state.pick ? <Ships pickShip={this.props.pickShip} ships={this.props.ships} /> : <div />}
+        {this.props.ship.showShips ? <Ships pickShip={this.props.pickShip} ships={this.props.ship.ships} /> : <div />}
       </div>
     )
   }

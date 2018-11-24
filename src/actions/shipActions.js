@@ -11,3 +11,10 @@ export const chooseShips = () => {
     payload: true
   }
 }
+
+export const allowPicking = () => {
+  return {
+    type: 'SHOW_SHIPS',
+    payload: true
+  }
+}

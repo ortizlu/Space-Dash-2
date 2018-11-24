@@ -21,10 +21,6 @@ class TypedIntro extends Component {
     let typed = new Typed(elem, options)
   }
 
-  def = () => {
-    console.log('def')
-  }
-
   gameStory = () => {
     this.typed(
       '#typed',
@@ -44,7 +40,7 @@ class TypedIntro extends Component {
   }
 
   next = () => {
-    this.props.canChooseShip()
+    this.props.allowedToChooseShip()
   }
 
   componentDidMount() {

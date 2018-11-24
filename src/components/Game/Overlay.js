@@ -9,8 +9,7 @@ import * as shipActions from '../../actions/shipActions'
 class Overlay extends Component {
 
 
-  canChooseShip = () => {
-    console.log(this.props.actions)
+  allowedToChooseShip = () => {
     this.props.actions.chooseShips()
   }
 
@@ -26,9 +25,9 @@ class Overlay extends Component {
     return (
       <div className="overlay">
         {this.props.ship.chooseShips ? (
-          <ChooseShip pickShip={this.pickShip} ships={this.props.ship.ships} />
+          <ChooseShip {...this.props} pickShip={this.pickShip} />
         ) : (
-          <TypedIntro canChooseShip={this.canChooseShip} />
+          <TypedIntro allowedToChooseShip={this.allowedToChooseShip} />
         )}
       </div>
     )

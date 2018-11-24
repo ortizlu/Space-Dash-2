@@ -1,5 +1,8 @@
+import { bindActionCreators } from "redux";
+
 const initialShipState = {
   chooseShips: false,
+  showShips: false,
   ships: [
     {
       name: 'MR-3',
@@ -27,6 +30,8 @@ export default (state = initialShipState, action) => {
       return {...state, ships: state.ships.filter(ship => action.shipName !== ship.name)}
     case 'CHOOSE_SHIPS':
       return {...state, chooseShips: action.payload }
+    case 'SHOW_SHIPS':
+      return {...state, showShips: action.payload}
     default:
       return state
   }
