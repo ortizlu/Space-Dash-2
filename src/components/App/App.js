@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import Splash from '../Splash/Splash'
-import GameMain from '../Game/GameMain'
+import Clouds from '../Game/Clouds'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as gameMainActions from '../../actions/gameMainActions'
@@ -18,7 +18,7 @@ class App extends Component {
       <div className="App">
         <main>
           {this.props.game.startGame ? (
-            <GameMain />
+            <Clouds />
           ) : (
             <Splash startGame={this.startGame} />
           )}

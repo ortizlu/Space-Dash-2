@@ -1,5 +1,6 @@
 
 const gameState = {
+  chooseShipsComplete: false,
   startGame: false,
   turn: false,
   playerOne: {
@@ -25,6 +26,8 @@ export default (state = gameState, action) => {
             }
     case 'CHANGE_TURN':
       return {...state, turn: action.payload}
+    case 'CHOOSE_SHIPS_COMPLETE':
+      return {...state, chooseShipsComplete: action.payload}
     default:
       return state
   }

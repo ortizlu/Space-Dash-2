@@ -6,7 +6,7 @@ const styles = {
   backgroundImage: "url('./img/background.jpg')"
 }
 
-const GameMain = () => {
+const Clouds = () => {
   return (
     <section className="splash-screen" style={styles}>
       <Overlay />
@@ -14,4 +14,4 @@ const GameMain = () => {
   );
 };
 
-export default GameMain;
+export default Clouds;

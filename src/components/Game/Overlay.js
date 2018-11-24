@@ -6,10 +6,10 @@ import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
 import * as shipActions from '../../actions/shipActions'
 import * as gameMainActions from '../../actions/gameMainActions'
-import PlayerOneAvatar from './avatar/PlayerOneAvatar'
-import PlayerTwoAvatar from './avatar/PlayerTwoAvatar'
-import PlayerOneSP from './avatar/PlayerOneSP'
-import PlayerTwoSP from './avatar/PlayerTwoSP'
+import PlayerOneAvatar from './dashboard/PlayerOneAvatar'
+import PlayerTwoAvatar from './dashboard/PlayerTwoAvatar'
+import PlayerOneSP from './dashboard/PlayerOneSP'
+import PlayerTwoSP from './dashboard/PlayerTwoSP'
 
 class Overlay extends Component {
 
@@ -28,31 +28,45 @@ class Overlay extends Component {
     this.props.actions.changeTurn(this.props.game.turn)
     //if its the second player's turn, proceed to start the game
     if (this.props.game.turn) {
-      console.log('let the games begin!')
+     this.props.actions.chooseShipsComplete()
     }
   }
 
   
 
   render() {
+    let center
+    if (this.props.game.chooseShipsComplete) {
+      center = <h1>Game main component</h1>
+    } else {
+      center = this.props.ship.chooseShips ? (
+        <ChooseShip {...this.props} pickShip={this.pickShip} />
+      ) : (
+        <TypedIntro allowedToChooseShip={this.allowedToChooseShip} />
+      )
+    }
     return (
       <div className="overlay">
 
+        {/* =========PLAYER TWO DASHBOARD========== */}
         {/* SHOW PLAYER TWO AVATAR */}
         {this.props.game.playerTwo.ship ? <PlayerTwoAvatar image={this.props.game.playerTwo.ship.image}></PlayerTwoAvatar> : <span></span>}
         {/* SHOW PLAYER TWO SHIP POINTS */}
         {this.props.game.playerTwo.ship ? <PlayerTwoSP sp={this.props.game.playerTwo.sp}></PlayerTwoSP> : <span></span>}
+        {/* ===========PLAYER TWO DASHBOARD========== */}
 
-        {this.props.ship.chooseShips ? (
-          <ChooseShip {...this.props} pickShip={this.pickShip} />
-        ) : (
-          <TypedIntro allowedToChooseShip={this.allowedToChooseShip} />
-        )}
 
+        {/* DISPLAY THE INTRO TEXT FIRST, THEN CHOOSESHIP COMPONENT, THEN DISPLAY THE GAME SCREEN */}
+        {center}
+
+        
+        {/* =========PLAYER ONE DASHBOARD========== */}
         {/* SHOW PLAYER ONE AVATAR */}
         {this.props.game.playerOne.ship ? <PlayerOneAvatar image={this.props.game.playerOne.ship.image}></PlayerOneAvatar> : <span></span>}
         {/* SHOW PLAYER ONE SHIP POINTS */}
         {this.props.game.playerOne.ship ? <PlayerOneSP sp={this.props.game.playerOne.sp}></PlayerOneSP> : <span></span>}
+        {/* =========PLAYER ONE DASHBOARD========== */}
+
       </div>
     )
   }

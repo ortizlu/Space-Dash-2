@@ -35,3 +35,10 @@ export const changeTurn = turn => {
     }
   }
 }
+
+export const chooseShipsComplete = () => {
+  return {
+    type: 'CHOOSE_SHIPS_COMPLETE',
+    payload: true
+  }
+}
