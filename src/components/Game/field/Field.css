@@ -70,3 +70,8 @@
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+
+.typed-instructions {
+  max-width: 160px;
+  text-align: center;
+}

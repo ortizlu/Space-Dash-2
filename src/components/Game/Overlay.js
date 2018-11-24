@@ -37,7 +37,28 @@ class Overlay extends Component {
 
   //============ MAIN GAME METHODS==================
 
+  deckDraw = () => {
+    this.props.actions.draw()
+    this.props.actions.addToHand(this.props.game.turn)
+  }
 
+  aTurn = () => {
+
+    //removes a card from the deck
+    // props.actions.draw(props.deck.cardDeck[0])
+
+    let player
+    if (!this.props.game.turn) {
+      player = 'Player 1'
+    } else {
+      player = 'Player 2'
+    }
+
+    //tell player to draw
+    this.props.actions.changeInstructions([`${player}: Your Turn`, 'Draw. (Deck is to the left)'])
+    //turn deck on to allow drawing (Deck component will take care of removing card from deck, and placing card in player's hand)
+    //
+  }
 
   //============ MAIN GAME METHODS==================
 
@@ -46,7 +67,7 @@ class Overlay extends Component {
   render() {
     let center
     if (this.props.game.chooseShipsComplete) {
-      center = <Field {...this.props}></Field>
+      center = <Field aTurn={this.aTurn} {...this.props}></Field>
     } else {
       center = this.props.ship.chooseShips ? (
         <ChooseShip {...this.props} pickShip={this.pickShip} />

@@ -1,16 +1,18 @@
 
 const gameState = {
-  instructions: 'Draw a Card ',
+  instructions: ['Player 1: Your Turn', 'Draw. (Deck is to the left)'],
   chooseShipsComplete: false,
   startGame: false,
   turn: false,
   playerOne: {
     ship: '',
-    sp: 0
+    sp: 0,
+    hand: []
   },
   playerTwo: {
     ship: '',
-    sp: 0
+    sp: 0,
+    hand: []
   }
 }
 
@@ -31,6 +33,17 @@ export default (state = gameState, action) => {
       return {...state, chooseShipsComplete: action.payload}
     case 'CHANGE_INSTRUCTIONS':
       return {...state, instructions: action.payload}
+    case 'ADD_TO_HAND':
+    //to add card to player's hand:
+    //1. make a copy of state
+    //2. make a copy of the player's object
+    //3. Target the hand array
+    //3. And inside the new array, make a copy of the hand array, then add action.card
+      return {...state, [action.player]: {
+                ...state[`${action.player}`],
+                hand: [...state[`${action.player}`].hand, action.card]
+              }
+             }
     default:
       return state
   }

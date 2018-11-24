@@ -11,7 +11,7 @@ const Field = (props) => {
     <div>
       <PlayerTwoHand></PlayerTwoHand>
 
-      <Deck {...props}></Deck>
+      <Deck aTurn={props.aTurn} {...props}></Deck>
 
       <Instructions message={props.game.instructions}></Instructions>
 

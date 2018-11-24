@@ -53,3 +53,17 @@ export const changeInstructions = (text) => {
     payload: text
   }
 }
+
+export const addToHand = (turn, card) => {
+  if (!turn) {
+    return {
+      type: 'ADD_TO_HAND',
+      card: card
+    }
+  } else {
+    return {
+      type: 'ADD_TO_HAND',
+      card: card
+    }
+  }
+}

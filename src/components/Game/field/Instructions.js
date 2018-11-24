@@ -17,18 +17,18 @@ class Instructions extends Component {
   }
 
   componentDidMount() {
-    this.typed('#typed-instructions', ['', this.props.message])
+    this.typed('#typed-instructions', this.props.message)
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.message !== prevProps.message) {
-      this.typed('#typed-instructions', ['', this.props.message])
+      this.typed('#typed-instructions', this.props.message)
     }
   }
 
   render() {
       return (
-        <span id="typed-instructions" className="typed-instructions"></span>
+        <p id="typed-instructions" className="typed-instructions"></p>
       );
   }
 }
