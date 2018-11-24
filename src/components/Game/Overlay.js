@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
 import * as shipActions from '../../actions/shipActions'
 import * as gameMainActions from '../../actions/gameMainActions'
+import * as deckActions from '../../actions/deckActions'
 import PlayerOneAvatar from './dashboard/PlayerOneAvatar'
 import PlayerTwoAvatar from './dashboard/PlayerTwoAvatar'
 import PlayerOneSP from './dashboard/PlayerOneSP'
@@ -36,9 +37,7 @@ class Overlay extends Component {
 
   //============ MAIN GAME METHODS==================
 
-  changeFieldInstructions = (message) => {
-    this.props.actions.changeInstructions(message)
-  }
+
 
   //============ MAIN GAME METHODS==================
 
@@ -85,13 +84,14 @@ class Overlay extends Component {
 function mapStateToProps(state, props) {
   return {
     ship: state.ship,
-    game: state.game
+    game: state.game,
+    deck: state.deck
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...shipActions, ...gameMainActions}, dispatch)
+    actions: bindActionCreators({...shipActions, ...gameMainActions, ...deckActions}, dispatch)
   }
 }
 
