@@ -4,6 +4,7 @@ import PlayerTwoHand from './PlayerTwoHand'
 import Deck from './Deck'
 import Graveyard from './Graveyard'
 import './Field.css'
+import Instructions from './Instructions';
 
 const Field = (props) => {
   return (
@@ -11,6 +12,9 @@ const Field = (props) => {
       <PlayerTwoHand></PlayerTwoHand>
 
       <Deck></Deck>
+
+      <Instructions></Instructions>
+
       <Graveyard></Graveyard>
       
       <PlayerOneHand></PlayerOneHand>

@@ -10,6 +10,9 @@ const PlayerOneHand = () => {
       <img src="./img/hidden.png" className="field__card"></img>
       <img src="./img/hidden.png" className="field__card"></img>
       <img src="./img/hidden.png" className="field__card"></img>
+      <img src="./img/hidden.png" className="field__card"></img>
+      <img src="./img/hidden.png" className="field__card"></img>
+      <img src="./img/hidden.png" className="field__card"></img>
     </div>
   );
 };
