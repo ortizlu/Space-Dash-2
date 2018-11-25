@@ -46,6 +46,8 @@ class Overlay extends Component {
     this.props.actions.draw(topCard)
     //disable drawing again
     this.props.actions.allowedToDraw(this.props.deck.drawingAllowed)
+    //give instructions on what to do next
+    this.props.actions.changeInstructions(['','','Make your move.'])
   }
 
   aTurn = () => {
