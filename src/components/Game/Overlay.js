@@ -47,7 +47,7 @@ class Overlay extends Component {
     //disable drawing again
     this.props.actions.allowedToDraw(this.props.deck.drawingAllowed)
     //give instructions on what to do next
-    this.props.actions.changeInstructions(['','','Make your move.'])
+    this.props.actions.changeInstructions(['', 'Make your move.'])
   }
 
   aTurn = () => {
@@ -67,6 +67,7 @@ class Overlay extends Component {
     //turn deck on to allow drawing (Deck component will take care of removing card from deck, and placing card in player's hand)
     this.props.actions.allowedToDraw(this.props.deck.drawingAllowed)
     //
+    console.log('deck is on!')
   }
 
   //============ MAIN GAME METHODS==================

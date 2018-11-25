@@ -1,6 +1,6 @@
 
 const gameState = {
-  instructions: ['Player 1: Your Turn', 'Draw. (Deck is to the left)'],
+  instructions: [],
   chooseShipsComplete: false,
   startGame: false,
   turn: false,
