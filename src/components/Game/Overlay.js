@@ -59,10 +59,8 @@ class Overlay extends Component {
     //grab the first five and set it to player one
     this.props.actions.firstFive('playerOne', this.props.deck.firstFiveOne)
 
+    //grab the first five and set it to player two
     this.props.actions.firstFive('playerTwo',this.props.deck.firstFiveTwo)
-
-    //removes a card from the deck
-    // props.actions.draw(props.deck.cardDeck[0])
 
     let player
     if (!this.props.game.turn) {
@@ -71,8 +69,11 @@ class Overlay extends Component {
       player = 'Player 2'
     }
 
+    //initial instructions - will be added in dist
+    this.props.actions.changeInstructions(['Welcome to the board','To the left of this text is the deck', 'To the right of this text is the discard pile', "Under this text is Player One's cards", "And above are Player Two's cards", "Lastly, The chosen ships are also displayed along with each Player's ShipPoints.", "Let the games begin!", `${player}: Your Turn`,'Draw.'])
+
     //tell player to draw
-    this.props.actions.changeInstructions([`${player}: Your Turn`, 'Draw. (Deck is to the left)'])
+    // this.props.actions.changeInstructions([`${player}: Your Turn`, 'Draw. (Deck is to the left)'])
     //turn deck on to allow drawing (Deck component will take care of removing card from deck, and placing card in player's hand)
     this.props.actions.allowedToDraw(this.props.deck.drawingAllowed)
 

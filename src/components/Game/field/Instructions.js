@@ -5,12 +5,14 @@ class Instructions extends Component {
   // =============================
   // TYPED.JS
   // =============================
-  typed = (elem, arr) => {
+  typed = (elem, arr, callback) => {
     let options = {
       typeSpeed: 15,
       strings: arr,
+      callback: callback,
       showCursor: false,
-      fadeOut: false
+      fadeOut: false,
+      backDelay: 1000
     }
 
     let typed = new Typed(elem, options)
