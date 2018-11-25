@@ -47,6 +47,7 @@ class Overlay extends Component {
   }
 
   deckDraw = () => {
+    this.props.actions.drawingAnimations()
     this.draw()
     //disable drawing again
     this.props.actions.allowedToDraw()

@@ -27,49 +27,12 @@
   position: absolute;
   left: 10px;
   top: 50%;
-  transform: translateY(-50%)
+  transform: translateY(-50%);
+  z-index: 2;
 }
 
 .field__deck:hover {
   transform: translateY(-50%) scale(1.2);
-}
-
-.field__card-behind-deck--animated-one {
-  animation: card-animate-one 1s ease;
-  animation-iteration-count: 1;
-}
-
-@keyframes card-animate-one {
-  0% {
-    position: static;
-    transform: translateY(50%) translateX(-100%);
-    opacity: 1;
-  }
-
-  100% {
-    position: static;
-    tranform: translateY(-150px) translateX(100px);
-    opacity: 0;
-  }
-}
-
-.field__card-behind-deck--animated-two {
-  animation: card-animate-two 1s ease;
-  animation-iteration-count: 1;
-}
-
-@keyframes card-animate-two {
-  0% {
-    position: static;
-    transform: translateY(50%) translateX(-100%);
-    opacity: 1;
-  }
-
-  100% {
-    position: static;
-    transform: translateY(150px) translateX(100px);
-    opacity: 0;
-  }
 }
 
 .field__card-behind-deck {
@@ -84,9 +47,46 @@
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  z-index: -1;
+  z-index: 0;
 }
 
+.field__card-behind-deck--animated-one {
+  animation: card-animate-one .3s linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes card-animate-one {
+  0% {
+    left: 10px;
+    top: 50%;
+    opacity: 1;
+  }
+
+  100% {
+    left: 40%;
+    top: 70%;
+    opacity: 0;
+  }
+}
+
+.field__card-behind-deck--animated-two {
+  animation: card-animate-two 1s ease;
+  animation-iteration-count: 1;
+}
+
+@keyframes card-animate-two {
+  0% {
+    left: 10px;
+    top: 50%;
+    opacity: 1;
+  }
+
+  100% {
+    left: 30%;
+    top: 30%;
+    opacity: 0;
+  }
+}
 
 .field__card {
   max-width: 40px;

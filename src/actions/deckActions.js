@@ -8,7 +8,7 @@ export const firstFive = (player, arr) => {
 }
 
 //DRAW A CARD
-export const draw = (card) => {
+export const draw = card => {
   return {
     type: 'DRAW',
     index: 0,
@@ -16,8 +16,14 @@ export const draw = (card) => {
   }
 }
 
-export const allowedToDraw = (bool) => {
+export const allowedToDraw = () => {
     return {
       type: 'ALLOWED_TO_DRAW'
     }
+}
+
+export const drawingAnimations = () => {
+  return {
+    type: 'DRAWING_ANIMATIONS'
+  }
 }

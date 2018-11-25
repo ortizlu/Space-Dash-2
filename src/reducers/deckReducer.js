@@ -1,5 +1,6 @@
 const deck = {
   drawingAllowed: false,
+  drawingAnimations: false,
   firstFiveOne: [],
   firstFiveTwo: [],
   cardDeck:[]
@@ -74,6 +75,10 @@ export default (state = deck, action) => {
     case 'ALLOWED_TO_DRAW':
       return {
         ...state, drawingAllowed: !state.drawingAllowed 
+      }
+    case 'DRAWING_ANIMATIONS':
+      return {
+        ...state, drawingAnimations: !state.drawingAnimations
       }
     default:
       return state

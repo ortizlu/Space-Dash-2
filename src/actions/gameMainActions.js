@@ -29,14 +29,14 @@ export const chooseShipsComplete = () => {
 }
 
 //CHANGE INSTRUCTIONS TEXT
-export const changeInstructions = (text) => {
+export const changeInstructions = text => {
   return {
     type: 'CHANGE_INSTRUCTIONS',
     payload: text
   }
 }
 
-export const addToHand = (card) => {
+export const addToHand = card => {
     return {
       type: 'ADD_TO_HAND',
       card: card
