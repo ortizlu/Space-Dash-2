@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import Typed from 'typed.js'
 
 class Instructions extends Component {
+  state = {
+    typedInstructionsCalled: false
+  }
+
   // =============================
   // TYPED.JS
   // =============================
@@ -21,7 +25,7 @@ class Instructions extends Component {
     let options = {
       typeSpeed: 15,
       strings: arr,
-      onComplete: cb(this.props.deck.drawingAllowed),
+      onComplete: cb,
       showCursor: false,
       fadeOut: false,
       backDelay: 1000
@@ -36,9 +40,13 @@ class Instructions extends Component {
 
   componentDidUpdate(prevProps) {
     //if the message coming in is the instructions of the layout of the field, start typed.js but with a callback, that allows a player to draw AFTER the message has been typed to avoid bugs.
-    console.log(this.props.message[0])
-    if (this.props.message[0] === 'Welcome to the board') {
-      this.typedWithCallBack('#typed-instructions', this.props.message, this.props.actions.allowedToDraw)
+    if (this.props.message[1] === 'Welcome to the board') {
+      //this single state lives inside instructions because componentDidUpdate gets called more than once for some reason, so to prevent loops with typed.js, a conditional is applied so that the typedWithCallBack method only gets called once
+      if (!this.state.typedInstructionsCalled) {
+        this.typedWithCallBack('#typed-instructions', this.props.message, this.props.actions.allowedToDraw)
+        this.setState({typedInstructionsCalled: true})
+      }
+      
     //otherwise if the message is new, display it with no callback.
     } else if (this.props.message !== prevProps.message) {
       this.typed('#typed-instructions', this.props.message)

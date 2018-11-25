@@ -49,7 +49,7 @@ class Overlay extends Component {
   deckDraw = () => {
     this.draw()
     //disable drawing again
-    this.props.actions.allowedToDraw(this.props.deck.drawingAllowed)
+    this.props.actions.allowedToDraw()
     //give instructions on what to do next
     this.props.actions.changeInstructions(['','Make your move.'])
   }
@@ -69,13 +69,13 @@ class Overlay extends Component {
       player = 'Player 2'
     }
 
-    //initial instructions - will be added in dist
-    // this.props.actions.changeInstructions(['Welcome to the board','To the left of this text is the deck', 'To the right of this text is the discard pile', "Under this text is Player One's cards", "And above are Player Two's cards", "Lastly, The chosen ships are also displayed along with each Player's ShipPoints.", "Let the games begin!", `${player}: Your Turn`,'Draw.'])
-
     //tell player to draw
-    this.props.actions.changeInstructions([`${player}: Your Turn`, 'Draw.'])
+    // this.props.actions.changeInstructions(['','Welcome to the board'])
+
+    this.props.actions.changeInstructions(['','Welcome to the board', 'To the left is the deck', 'To the right is the discard pile', "Under is Player One's cards", "And above are Player Two's cards", "Lastly, The chosen ships are also displayed along with each Player's ShipPoints.", "Let the games begin!", `${player}: Your Turn, draw.`])
+  
     //turn deck on to allow drawing (Deck component will take care of removing card from deck, and placing card in player's hand)
-    // this.props.actions.allowedToDraw(this.props.deck.drawingAllowed)
+    // this.props.actions.allowedToDraw()
 
   }
 
