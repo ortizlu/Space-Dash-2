@@ -23,11 +23,11 @@ class Overlay extends Component {
   pickShip = (e) => {
     let pick = e.target.name
     //add their ship to their object based on who's turn is it. The second parameter is the ship itself (name and image url)
-    this.props.actions.pickShip(this.props.game.turn, {name: pick, image: e.target.dataset.image})
+    this.props.actions.pickShip({name: pick, image: e.target.dataset.image})
     //remove ship from array
     this.props.actions.removeShip(pick)
     //change to next person's turn
-    this.props.actions.changeTurn(this.props.game.turn)
+    this.props.actions.changeTurn()
     //if its the second player's turn, proceed to start the game
     if (this.props.game.turn) {
      this.props.actions.chooseShipsComplete()
@@ -41,7 +41,7 @@ class Overlay extends Component {
     //get the top card of the deck
     let topCard = this.props.deck.cardDeck[0]
     //add card to player's hand
-    this.props.actions.addToHand(this.props.game.turn, topCard)
+    this.props.actions.addToHand(topCard)
     //remove top card and add 
     this.props.actions.draw(topCard)
   }
@@ -70,12 +70,12 @@ class Overlay extends Component {
     }
 
     //initial instructions - will be added in dist
-    this.props.actions.changeInstructions(['Welcome to the board','To the left of this text is the deck', 'To the right of this text is the discard pile', "Under this text is Player One's cards", "And above are Player Two's cards", "Lastly, The chosen ships are also displayed along with each Player's ShipPoints.", "Let the games begin!", `${player}: Your Turn`,'Draw.'])
+    // this.props.actions.changeInstructions(['Welcome to the board','To the left of this text is the deck', 'To the right of this text is the discard pile', "Under this text is Player One's cards", "And above are Player Two's cards", "Lastly, The chosen ships are also displayed along with each Player's ShipPoints.", "Let the games begin!", `${player}: Your Turn`,'Draw.'])
 
     //tell player to draw
-    // this.props.actions.changeInstructions([`${player}: Your Turn`, 'Draw. (Deck is to the left)'])
+    this.props.actions.changeInstructions([`${player}: Your Turn`, 'Draw.'])
     //turn deck on to allow drawing (Deck component will take care of removing card from deck, and placing card in player's hand)
-    this.props.actions.allowedToDraw(this.props.deck.drawingAllowed)
+    // this.props.actions.allowedToDraw(this.props.deck.drawingAllowed)
 
   }
 

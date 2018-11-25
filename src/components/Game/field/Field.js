@@ -19,7 +19,7 @@ class Field extends Component {
 
           <Deck deckDraw={this.props.deckDraw} {...this.props}></Deck>
 
-          <Instructions message={this.props.game.instructions}></Instructions>
+          <Instructions {...this.props} message={this.props.game.instructions}></Instructions>
 
           <Graveyard></Graveyard>
 

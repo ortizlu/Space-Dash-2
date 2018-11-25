@@ -18,7 +18,6 @@ export const draw = (card) => {
 
 export const allowedToDraw = (bool) => {
     return {
-      type: 'ALLOWED_TO_DRAW',
-      payload: !bool
+      type: 'ALLOWED_TO_DRAW'
     }
 }
