@@ -1,6 +1,6 @@
 
 const gameState = {
-  instructions: [],
+  instructions: [''],
   chooseShipsComplete: false,
   startGame: false,
   turn: false,

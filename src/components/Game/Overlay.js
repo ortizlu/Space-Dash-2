@@ -44,13 +44,20 @@ class Overlay extends Component {
     this.props.actions.addToHand(this.props.game.turn, topCard)
     //remove top card and add 
     this.props.actions.draw(topCard)
+    
+  }
+
+  afterTurnDraw = () => {
     //disable drawing again
     this.props.actions.allowedToDraw(this.props.deck.drawingAllowed)
     //give instructions on what to do next
-    this.props.actions.changeInstructions(['', 'Make your move.'])
+    this.props.actions.changeInstructions(['','Make your move.'])
   }
 
   aTurn = () => {
+
+    //distribute 5 cards to each player
+    
 
     //removes a card from the deck
     // props.actions.draw(props.deck.cardDeck[0])
@@ -66,8 +73,7 @@ class Overlay extends Component {
     this.props.actions.changeInstructions([`${player}: Your Turn`, 'Draw. (Deck is to the left)'])
     //turn deck on to allow drawing (Deck component will take care of removing card from deck, and placing card in player's hand)
     this.props.actions.allowedToDraw(this.props.deck.drawingAllowed)
-    //
-    console.log('deck is on!')
+
   }
 
   //============ MAIN GAME METHODS==================

@@ -34,6 +34,46 @@
   transform: translateY(-50%) scale(1.2);
 }
 
+.field__deck--animated-one {
+  animation: card-animate-one 1s ease;
+  animation-iteration-count: 5;
+}
+
+@keyframes card-animate-one {
+  0% {
+    position: static;
+    transform: translateY(50%) translateX(-100%);
+    opacity: 1;
+  }
+
+  100% {
+    position: static;
+    tranform: translateY(-150px) translateX(100px);
+    opacity: 0;
+  }
+}
+
+.field__deck--animated-two {
+  animation: card-animate-two 1s ease;
+  animation-iteration-count: 5;
+}
+
+@keyframes card-animate-two {
+  0% {
+    position: static;
+    transform: translateY(50%) translateX(-100%);
+    opacity: 1;
+  }
+
+  100% {
+    position: static;
+    transform: translateY(150px) translateX(100px);
+    opacity: 0;
+  }
+}
+
+
+
 .field__card {
   max-width: 40px;
   background-color: #730f9e;
