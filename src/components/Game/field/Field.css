@@ -34,7 +34,7 @@
   transform: translateY(-50%) scale(1.2);
 }
 
-.field__deck--animated-one {
+.field__card-behind-deck--animated-one {
   animation: card-animate-one 1s ease;
   animation-iteration-count: 5;
 }
@@ -53,7 +53,7 @@
   }
 }
 
-.field__deck--animated-two {
+.field__card-behind-deck--animated-two {
   animation: card-animate-two 1s ease;
   animation-iteration-count: 5;
 }
@@ -72,6 +72,20 @@
   }
 }
 
+.field__card-behind-deck {
+  max-width: 50px;
+  height: auto;
+  background-color: #730f9e;
+  padding: 10px 5px;
+  box-shadow: 1px 1px 7px 0px grey;
+  transition: transform .3s;
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
 
 
 .field__card {

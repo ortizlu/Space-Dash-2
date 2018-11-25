@@ -7,8 +7,12 @@ const Deck = (props) => {
   }
 
   return (
-    <img onClick={props.deck.drawingAllowed ? props.deckDraw : def} src="./img/deck.png" className="field__deck">
-    </img>
+    <div>
+      <img onClick={props.deck.drawingAllowed ? props.deckDraw : def} src="./img/deck.png" className="field__deck">
+      </img>
+      <img src="./img/hidden.png" className="field__card-behind-deck"></img>
+    </div>
+    
   );
 };
 
