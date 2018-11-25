@@ -58,12 +58,14 @@ export const addToHand = (turn, card) => {
   if (!turn) {
     return {
       type: 'ADD_TO_HAND',
-      card: card
+      card: card,
+      player: 'playerOne'
     }
   } else {
     return {
       type: 'ADD_TO_HAND',
-      card: card
+      card: card,
+      player: 'playerTwo'
     }
   }
 }

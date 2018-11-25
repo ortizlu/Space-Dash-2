@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PlayerOneHand from './PlayerOneHand'
 import PlayerTwoHand from './PlayerTwoHand'
 import Deck from './Deck'
@@ -6,20 +6,28 @@ import Graveyard from './Graveyard'
 import './Field.css'
 import Instructions from './Instructions';
 
-const Field = (props) => {
-  return (
-    <div>
-      <PlayerTwoHand></PlayerTwoHand>
+class Field extends Component {
 
-      <Deck aTurn={props.aTurn} {...props}></Deck>
+  componentDidMount() {
+    this.props.aTurn()
+  }
 
-      <Instructions message={props.game.instructions}></Instructions>
+  render() {
+    return (
+      <div>
+          <PlayerTwoHand></PlayerTwoHand>
 
-      <Graveyard></Graveyard>
-      
-      <PlayerOneHand></PlayerOneHand>
-    </div>
-  );
-};
+          <Deck deckDraw={this.props.deckDraw} {...this.props}></Deck>
+
+          <Instructions message={this.props.game.instructions}></Instructions>
+
+          <Graveyard></Graveyard>
+
+          <PlayerOneHand></PlayerOneHand>
+      </div>
+    );
+  }
+}
 
 export default Field;
+

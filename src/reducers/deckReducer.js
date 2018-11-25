@@ -1,5 +1,5 @@
 const deck = {
-  cardDrawn: '',
+  drawingAllowed: false,
   cardDeck:[]
 }
 
@@ -50,7 +50,12 @@ for (let i = 0; i < 5; i++) {
 export default (state = deck, action) => {
   switch(action.type) {
     case 'DRAW':
-      return {...state, cardDrawn: action.card, cardDeck: [...state.cardDeck.slice(0, action.index), ...state.cardDeck.slice(action.index + 1)]}
+      //remove top card from deck
+      return {...state, cardDeck: [...state.cardDeck.slice(0, action.index), ...state.cardDeck.slice(action.index + 1)]}
+    case 'ALLOWED_TO_DRAW':
+      return {
+        ...state, drawingAllowed: action.payload 
+      }
     default:
       return state
   }

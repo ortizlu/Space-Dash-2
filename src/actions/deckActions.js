@@ -6,3 +6,10 @@ export const draw = (card) => {
     card: card
   }
 }
+
+export const allowedToDraw = (bool) => {
+    return {
+      type: 'ALLOWED_TO_DRAW',
+      payload: !bool
+    }
+}
