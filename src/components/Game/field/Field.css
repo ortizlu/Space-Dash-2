@@ -36,7 +36,7 @@
 
 .field__card-behind-deck--animated-one {
   animation: card-animate-one 1s ease;
-  animation-iteration-count: 5;
+  animation-iteration-count: 1;
 }
 
 @keyframes card-animate-one {
@@ -55,7 +55,7 @@
 
 .field__card-behind-deck--animated-two {
   animation: card-animate-two 1s ease;
-  animation-iteration-count: 5;
+  animation-iteration-count: 1;
 }
 
 @keyframes card-animate-two {

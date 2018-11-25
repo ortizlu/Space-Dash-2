@@ -37,17 +37,17 @@ class Overlay extends Component {
 
   //============ MAIN GAME METHODS==================
 
-  deckDraw = () => {
+  draw = () => {
     //get the top card of the deck
     let topCard = this.props.deck.cardDeck[0]
     //add card to player's hand
     this.props.actions.addToHand(this.props.game.turn, topCard)
     //remove top card and add 
     this.props.actions.draw(topCard)
-    
   }
 
-  afterTurnDraw = () => {
+  deckDraw = () => {
+    this.draw()
     //disable drawing again
     this.props.actions.allowedToDraw(this.props.deck.drawingAllowed)
     //give instructions on what to do next
@@ -56,8 +56,10 @@ class Overlay extends Component {
 
   aTurn = () => {
 
-    //distribute 5 cards to each player
-    
+    //grab the first five and set it to player one
+    this.props.actions.firstFive('playerOne', this.props.deck.firstFiveOne)
+
+    this.props.actions.firstFive('playerTwo',this.props.deck.firstFiveTwo)
 
     //removes a card from the deck
     // props.actions.draw(props.deck.cardDeck[0])

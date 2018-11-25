@@ -33,6 +33,13 @@ export default (state = gameState, action) => {
       return {...state, chooseShipsComplete: action.payload}
     case 'CHANGE_INSTRUCTIONS':
       return {...state, instructions: action.payload}
+    case 'FIRST_FIVE':
+      return {
+        ...state, [action.player]: {
+          ...state[`${action.player}`],
+          hand: [...state[`${action.player}`].hand, ...action.cards]
+        } 
+      }
     case 'ADD_TO_HAND':
     //to add card to player's hand:
     //1. make a copy of state

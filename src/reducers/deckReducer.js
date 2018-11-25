@@ -1,5 +1,7 @@
 const deck = {
   drawingAllowed: false,
+  firstFiveOne: [],
+  firstFiveTwo: [],
   cardDeck:[]
 }
 
@@ -47,10 +49,21 @@ for (let i = 0; i < 5; i++) {
 
 
 // USING FISHER-YATES MODEL FOR SHUFFLING
-  for (let aCard = deck.cardDeck.length - 1; aCard > 0; aCard--) {
-    let randomCard = Math.floor(Math.random() * (aCard + 1))
-      ;[deck.cardDeck[aCard], deck.cardDeck[randomCard]] = [deck.cardDeck[randomCard], deck.cardDeck[aCard]]
-  }
+for (let aCard = deck.cardDeck.length - 1; aCard > 0; aCard--) {
+  let randomCard = Math.floor(Math.random() * (aCard + 1))
+    ;[deck.cardDeck[aCard], deck.cardDeck[randomCard]] = [deck.cardDeck[randomCard], deck.cardDeck[aCard]]
+}
+
+//add First Five to properties before setting state
+for (let i = 0; i < 5; i++) {
+  let card = deck.cardDeck.shift()
+  deck.firstFiveOne.push(card)
+}
+
+for (let i = 0; i < 5; i++) {
+  let card = deck.cardDeck.shift()
+  deck.firstFiveTwo.push(card)
+}
 
 
 export default (state = deck, action) => {
