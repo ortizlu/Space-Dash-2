@@ -2,7 +2,7 @@ import React from 'react';
 
 const Graveyard = () => {
   return (
-    <img src="./img/discard.png" className="field__graveyard">
+    <img src="./img/discard.png" alt="graveyard" className="field__graveyard">
       
     </img>
   );
