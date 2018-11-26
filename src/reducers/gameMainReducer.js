@@ -127,11 +127,13 @@ export default (state = gameState, action) => {
       if (activeCard.cardType === 'att') {
         //if 0, show message that player attacked but opponent did not have any points
       if (state[`${opponent}`].sp === 0) {
-        //log will be removed to keep pure
-        console.log('player attacked but opponent did not have any points')
-        //remove staged card
+        
         return {
-          ...state, [`${player}`]: {
+          ...state,
+          //tell player he attacked in vain 
+          instructions: [' ', 'player attacked but opponent did not have any points'],
+          //remove staged card
+          [`${player}`]: {
             ...state[`${player}`], cardStaged: {}
           }
         }
@@ -139,7 +141,7 @@ export default (state = gameState, action) => {
       } else if (state[`${opponent}`].sp - activeCard.cardPt <= 0) {
         return {
           //remove staged card
-          ...state, [`${player}`]: {
+          ...state, instructions: [" ", "Opponent's points are back to 0"], [`${player}`]: {
             ...state[`${player}`], cardStaged: {}
           },
           //set opponent's points to 0
@@ -150,8 +152,11 @@ export default (state = gameState, action) => {
         }
       } else {
         return {
+          ...state, 
+          //opponent succesfully attacked
+          instructions: [" ","Opponent's was attacked!"],
           //remove staged card
-          ...state, [`${player}`]: {
+          [`${player}`]: {
             ...state[`${player}`], cardStaged: {}
           },
           //set opponent's SP to be SP - activeCard attack points
@@ -165,9 +170,9 @@ export default (state = gameState, action) => {
 
       //==============DEF==============================
     } else if (activeCard.cardType === 'def') {
-      //this log will be deleted to maitain purity
-      console.log('you cannot use that card until opponent attacks')
-      return state
+      return {
+        ...state, instructions: ['', 'You can only use that card when opponent attacks.']
+      }
       //==============END DEF==============================
 
       //==============SP==============================
@@ -178,7 +183,11 @@ export default (state = gameState, action) => {
         }
 
         return {
-          ...state, [`${player}`]: {
+          ...state, 
+          //points added
+          instructions: ['Points succesfully added'],
+          //add points
+          [`${player}`]: {
             ...state[`${player}`], sp: state[`${player}`].sp + activeCard.cardPt, 
             //remove staged card
             cardStaged: {}
