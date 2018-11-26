@@ -3,7 +3,8 @@ import Typed from 'typed.js'
 
 class Instructions extends Component {
   state = {
-    typedInstructionsCalled: false
+    typedInstructionsCalled: false,
+    drawInstructionsCalled: false
   }
 
   // =============================
@@ -47,8 +48,14 @@ class Instructions extends Component {
         this.setState({typedInstructionsCalled: true})
       }
       
+    } else if (this.props.message[1] === 'Make your move.') {
+      if (!this.state.drawInstructionsCalled) {
+        this.typedWithCallBack('#typed-instructions', this.props.message, this.props.actions.showCards)
+        this.setState({drawInstructionsCalled: true})
+      }
+    } 
     //otherwise if the message is new, display it with no callback.
-    } else if (this.props.message !== prevProps.message) {
+    else if (this.props.message !== prevProps.message) {
       this.typed('#typed-instructions', this.props.message)
     }
   }
