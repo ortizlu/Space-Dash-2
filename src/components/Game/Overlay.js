@@ -80,13 +80,28 @@ class Overlay extends Component {
   }
 
   activatingCard = (type, pt) => {
+    let typeFull = ''
+    switch (type) {
+      case 'att':
+        typeFull = 'attack'
+        break
+      case 'def':
+        typeFull = 'defense'
+        break
+      case 'sp':
+        typeFull = 'ShipPoint'
+        break
+      default:
+        break
+    }
+
     let plural
     if (pt > 1) {
       plural = 'points'
     } else {
       plural = 'point'
     }
-    this.props.actions.changeInstructions(['',`Use ${type} card for ${pt} ${plural}?`])
+    this.props.actions.changeInstructions(['',`Use ${typeFull} card for ${pt} ${plural}?`])
   }
 
   //============ MAIN GAME METHODS==================
