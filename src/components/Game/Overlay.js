@@ -80,7 +80,13 @@ class Overlay extends Component {
   }
 
   activatingCard = (type, pt) => {
-    console.log(type,pt)
+    let plural
+    if (pt > 1) {
+      plural = 'points'
+    } else {
+      plural = 'point'
+    }
+    this.props.actions.changeInstructions(['',`Use ${type} card for ${pt} ${plural}?`])
   }
 
   //============ MAIN GAME METHODS==================
