@@ -52,7 +52,7 @@ class Overlay extends Component {
     //disable drawing again
     this.props.actions.allowedToDraw()
     //give instructions on what to do next
-    this.props.actions.changeInstructions(['','Make your move.'])
+    this.props.actions.changeInstructions(['','Make your move.','Use one of the cards shown'])
 
     this.props.actions.showCards()
   }
@@ -79,6 +79,10 @@ class Overlay extends Component {
 
   }
 
+  activatingCard = (type, pt) => {
+    console.log(type,pt)
+  }
+
   //============ MAIN GAME METHODS==================
 
   
@@ -86,7 +90,7 @@ class Overlay extends Component {
   render() {
     let center
     if (this.props.game.chooseShipsComplete) {
-      center = <Field deckDraw={this.deckDraw} aTurn={this.aTurn} {...this.props}></Field>
+      center = <Field activatingCard={this.activatingCard} deckDraw={this.deckDraw} aTurn={this.aTurn} {...this.props}></Field>
     } else {
       center = this.props.ship.chooseShips ? (
         <ChooseShip {...this.props} pickShip={this.pickShip} />

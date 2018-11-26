@@ -100,7 +100,8 @@
   transform: scale(1.1);
 }
 
-.field__card--shown:active {
+/* when a user clicks on a card */
+.field__card--expanded {
   transform: scale(3);
 }
 

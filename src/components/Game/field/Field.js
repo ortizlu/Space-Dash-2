@@ -15,7 +15,7 @@ class Field extends Component {
   render() {
     return (
       <div>
-          <PlayerTwoHand {...this.props}></PlayerTwoHand>
+          <PlayerTwoHand activatingCard={this.props.activatingCard} {...this.props}></PlayerTwoHand>
 
           <Deck deckDraw={this.props.deckDraw} {...this.props}></Deck>
 
@@ -23,7 +23,7 @@ class Field extends Component {
 
           <Graveyard></Graveyard>
 
-          <PlayerOneHand {...this.props}></PlayerOneHand>
+          <PlayerOneHand activatingCard={this.props.activatingCard} {...this.props}></PlayerOneHand>
       </div>
     );
   }
