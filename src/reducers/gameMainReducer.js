@@ -123,10 +123,8 @@ export default (state = gameState, action) => {
       //set active card
       activeCard = state[`${player}`].cardStaged
 
-      //if card is att, check other player's SP
+      //==============ATT==============================
       if (activeCard.cardType === 'att') {
-
-        //==============IF ATT==============================
         //if 0, show message that player attacked but opponent did not have any points
       if (state[`${opponent}`].sp === 0) {
         //log will be removed to keep pure
@@ -163,21 +161,30 @@ export default (state = gameState, action) => {
           }
         }
       }
-      //==============END IF ATT==============================
+      //==============END ATT==============================
 
-      //==============IF DEF==============================
+      //==============DEF==============================
     } else if (activeCard.cardType === 'def') {
       //this log will be deleted to maitain purity
       console.log('you cannot use that card until opponent attacks')
       return state
-      //==============END IF DEF==============================
+      //==============END DEF==============================
 
-      //==============IF SP==============================
+      //==============SP==============================
     } else if (activeCard.cardType === 'sp') {
-      if (state[`${player}`].sp + activeCard.cardPt >= 3) {
         //this log will be deleted to maitain purity
-        console.log(`${player} Wins the game!`)
-      }
+        if (state[`${player}`].sp + activeCard.cardPt >= 3) {
+          console.log(`${player} Wins the game!`)
+        }
+
+        return {
+          ...state, [`${player}`]: {
+            ...state[`${player}`], sp: state[`${player}`].sp + activeCard.cardPt, 
+            //remove staged card
+            cardStaged: {}
+          }
+        }
+      //==============END SP==============================
     }
     default:
       return state

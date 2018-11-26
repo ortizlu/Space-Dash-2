@@ -64,3 +64,29 @@ export const cardStaged = (cardType, cardPt, cardIndex) => {
 export const activateCard = () => {
   return {type: 'ACTIVATE_CARD'}
 }
+
+
+//take card that's staged
+//based on whos turn is it, evaluate what card is it
+
+//ATT:
+//remove it from person's hand
+//add it to the graveyard (make a graveyard array)
+//show graveyard animation
+
+//else make opponent sp = opponent sp - att pt
+//remove staged card. 
+
+//SP:
+//remove it from person's hand
+//add it to the graveyard (make a graveyard array)
+//show graveyard animation
+//if card is sp, add pt to player's sp
+//check player's sp if it is greater or equal to 3
+//if so, display message that player won.
+//else remove staged card
+
+
+//DEF:
+//if card is def, inform the player that they can't use it until opponent attacks.
+//remove card from staged
