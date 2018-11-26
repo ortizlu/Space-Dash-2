@@ -47,7 +47,7 @@ class Instructions extends Component {
         this.typedWithCallBack('#typed-instructions', this.props.message, this.props.actions.allowedToDraw)
         this.setState({typedInstructionsCalled: true})
       }
-      
+    //if drawing instructions are coming, use a callback so that player doesn't try to play anything while typed is still typing  
     } else if (this.props.message[1] === 'Make your move.') {
       if (!this.state.drawInstructionsCalled) {
         this.typedWithCallBack('#typed-instructions', this.props.message, this.props.actions.showCards)
