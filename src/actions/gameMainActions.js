@@ -42,3 +42,9 @@ export const addToHand = card => {
       card: card
     }
 }
+
+export const showCards = () => {
+  return {
+    type: 'SHOW_CARDS'
+  }
+}

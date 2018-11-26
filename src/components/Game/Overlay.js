@@ -53,6 +53,8 @@ class Overlay extends Component {
     this.props.actions.allowedToDraw()
     //give instructions on what to do next
     this.props.actions.changeInstructions(['','Make your move.'])
+
+    this.props.actions.showCards()
   }
 
   aTurn = () => {
