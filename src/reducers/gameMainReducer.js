@@ -107,16 +107,78 @@ export default (state = gameState, action) => {
         }
       }
     case 'ACTIVATE_CARD':
-      //to activate a card, 
-      //we must check person's turn
+      let player
+      let opponent
+      let activeCard
+
+      //check whos player and whos opponent
       if (!state.turn) {
-        let activeCard = state.playerOne.cardStaged
-        if (activeCard.cardType === 'att') {
-          
+        player = 'playerOne'
+        opponent = 'playerTwo'
+      } else {
+        player = 'playerTwo'
+        opponent = 'playerOne'
+      }
+
+      //set active card
+      activeCard = state[`${player}`].cardStaged
+
+      //if card is att, check other player's SP
+      if (activeCard.cardType === 'att') {
+
+        //==============IF ATT==============================
+        //if 0, show message that player attacked but opponent did not have any points
+      if (state[`${opponent}`].sp === 0) {
+        //log will be removed to keep pure
+        console.log('player attacked but opponent did not have any points')
+        //remove staged card
+        return {
+          ...state, [`${player}`]: {
+            ...state[`${player}`], cardStaged: {}
+          }
+        }
+        //else if opponent sp - att pt < 0, set opponent points to 0
+      } else if (state[`${opponent}`].sp - activeCard.cardPt <= 0) {
+        return {
+          //remove staged card
+          ...state, [`${player}`]: {
+            ...state[`${player}`], cardStaged: {}
+          },
+          //set opponent's points to 0
+          [`${opponent}`]: {
+            ...state[`${opponent}`],
+            sp: 0
+          }
         }
       } else {
-        
+        return {
+          //remove staged card
+          ...state, [`${player}`]: {
+            ...state[`${player}`], cardStaged: {}
+          },
+          //set opponent's SP to be SP - activeCard attack points
+          [`${opponent}`]: {
+            ...state[`${opponent}`],
+            sp: state[`${opponent}`].sp - activeCard.cardPt
+          }
+        }
       }
+      //==============END IF ATT==============================
+
+      //==============IF DEF==============================
+    } else if (activeCard.cardType === 'def') {
+      //this log will be deleted to maitain purity
+      console.log('you cannot use that card until opponent attacks')
+      return state
+      //==============END IF DEF==============================
+
+      //==============IF SP==============================
+    } else if (activeCard.cardType === 'sp') {
+      if (state[`${player}`].sp + activeCard.cardPt >= 3) {
+        //this log will be deleted to maitain purity
+        console.log(`${player} Wins the game!`)
+      }
+    }
     default:
       return state
   }
