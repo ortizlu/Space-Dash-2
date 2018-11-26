@@ -48,3 +48,15 @@ export const showCards = () => {
     type: 'SHOW_CARDS'
   }
 }
+
+export const cardStaged = (cardType, cardPt, cardIndex) => {
+  let card = {
+    cardType,
+    cardPt,
+    cardIndex
+  }
+  return {
+    type: 'CARD_STAGED',
+    card
+  }
+}

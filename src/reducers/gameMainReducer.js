@@ -5,12 +5,14 @@ const gameState = {
   startGame: false,
   turn: false,
   playerOne: {
+    cardStaged: {},
     ship: '',
     sp: 0,
     showCards: false,
     hand: []
   },
   playerTwo: {
+    cardStaged: {},
     ship: '',
     sp: 0,
     showCards: false,
@@ -88,6 +90,22 @@ export default (state = gameState, action) => {
           }
         }
       }
+    case 'CARD_STAGED':
+    if (!state.turn) {
+      return {
+        ...state, playerOne: {
+          ...state.playerOne,
+          cardStaged: action.card
+        }
+      }
+    } else {
+      return {
+        ...state, playerTwo: {
+          ...state.playerTwo,
+          cardStaged: action.card
+        }
+      }
+    }
     default:
       return state
   }

@@ -77,7 +77,7 @@ class Overlay extends Component {
 
   }
 
-  activatingCard = (type, pt) => {
+  activatingCard = (type, pt, index) => {
     let typeFull = ''
     switch (type) {
       case 'att':
@@ -100,6 +100,8 @@ class Overlay extends Component {
       plural = 'point'
     }
     this.props.actions.changeInstructions(['',`Use ${typeFull} card for ${pt} ${plural}?`])
+
+    this.props.actions.cardStaged(type, parseInt(pt), parseInt(index))
   }
 
   //============ MAIN GAME METHODS==================
@@ -122,7 +124,7 @@ class Overlay extends Component {
 
         {/* =========PLAYER TWO DASHBOARD========== */}
         {/* SHOW PLAYER TWO AVATAR */}
-        {this.props.game.playerTwo.ship ? <PlayerTwoAvatar image={this.props.game.playerTwo.ship.image}></PlayerTwoAvatar> : <span></span>}
+        {this.props.game.playerTwo.ship ? <PlayerTwoAvatar {...this.props} image={this.props.game.playerTwo.ship.image}></PlayerTwoAvatar> : <span></span>}
         {/* SHOW PLAYER TWO SHIP POINTS */}
         {this.props.game.playerTwo.ship ? <PlayerTwoSP sp={this.props.game.playerTwo.sp}></PlayerTwoSP> : <span></span>}
         {/* ===========PLAYER TWO DASHBOARD========== */}
@@ -134,7 +136,7 @@ class Overlay extends Component {
         
         {/* =========PLAYER ONE DASHBOARD========== */}
         {/* SHOW PLAYER ONE AVATAR */}
-        {this.props.game.playerOne.ship ? <PlayerOneAvatar image={this.props.game.playerOne.ship.image}></PlayerOneAvatar> : <span></span>}
+        {this.props.game.playerOne.ship ? <PlayerOneAvatar {...this.props} image={this.props.game.playerOne.ship.image}></PlayerOneAvatar> : <span></span>}
         {/* SHOW PLAYER ONE SHIP POINTS */}
         {this.props.game.playerOne.ship ? <PlayerOneSP sp={this.props.game.playerOne.sp}></PlayerOneSP> : <span></span>}
         {/* =========PLAYER ONE DASHBOARD========== */}

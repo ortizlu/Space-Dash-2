@@ -3,8 +3,7 @@ import React from 'react';
 const PlayerOneHand = (props) => {
 
   const expandCard = (e) => {
-    console.log(e.target.dataset.position)
-    props.activatingCard(e.target.dataset.type, e.target.dataset.pt)
+    props.activatingCard(e.target.dataset.type, e.target.dataset.pt, e.target.dataset.position)
   }
 
   let cards
