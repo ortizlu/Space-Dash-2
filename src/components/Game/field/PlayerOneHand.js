@@ -10,7 +10,10 @@ const PlayerOneHand = (props) => {
   if (props.game.playerOne.showCards) {
     //display cards if show cards is on
     cards = props.game.playerOne.hand.map((card, index) => {
-      return <img onClick={expandCard} key={index} alt="card" src={"./img/" + card.type + ".png"} data-type={card.type} data-pt={card.pt} className="field__card"></img>
+      return <div>
+        <img onClick={expandCard} key={index} alt="card" src={"./img/" + card.type + ".png"} data-type={card.type} data-pt={card.pt} className="field__card"></img>
+      <p className="field__card__info">{card.type} {card.pt}</p>
+      </div>
     })
   } else {
     //otherwise make them all hidden

@@ -96,6 +96,12 @@
   padding: 5px 2px;
 }
 
+.field__card__info {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
 .field__card:hover {
   transform: scale(1.1);
 }
