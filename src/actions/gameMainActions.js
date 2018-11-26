@@ -60,3 +60,7 @@ export const cardStaged = (cardType, cardPt, cardIndex) => {
     card
   }
 }
+
+export const activateCard = () => {
+  return {type: 'ACTIVATE_CARD'}
+}

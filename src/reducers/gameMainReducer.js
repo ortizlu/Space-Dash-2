@@ -91,21 +91,32 @@ export default (state = gameState, action) => {
         }
       }
     case 'CARD_STAGED':
-    if (!state.turn) {
-      return {
-        ...state, playerOne: {
-          ...state.playerOne,
-          cardStaged: action.card
+      if (!state.turn) {
+        return {
+          ...state, playerOne: {
+            ...state.playerOne,
+            cardStaged: action.card
+          }
+        }
+      } else {
+        return {
+          ...state, playerTwo: {
+            ...state.playerTwo,
+            cardStaged: action.card
+          }
         }
       }
-    } else {
-      return {
-        ...state, playerTwo: {
-          ...state.playerTwo,
-          cardStaged: action.card
+    case 'ACTIVATE_CARD':
+      //to activate a card, 
+      //we must check person's turn
+      if (!state.turn) {
+        let activeCard = state.playerOne.cardStaged
+        if (activeCard.cardType === 'att') {
+          
         }
+      } else {
+        
       }
-    }
     default:
       return state
   }
